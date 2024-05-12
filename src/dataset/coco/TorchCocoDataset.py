@@ -250,6 +250,8 @@ if __name__ == '__main__':
     from visualize.mask_utils import draw_mask_contours
     from visualize.color import BGR_COLORS
 
+    from const.const_values import ROOT
+
     img_transforms = transforms.Compose([
         transforms.ToPILImage(),
         transforms.Resize((768, 768)),
@@ -259,17 +261,18 @@ if __name__ == '__main__':
         transforms.Resize((768, 768)),
     ])
 
-    image_dir = "/Users/nao.yamada/personal/unet-sample/datasets/coco-2017/validation/data"
-    annotation_file = "/Users/nao.yamada/personal/unet-sample/datasets/coco-2017/validation/labels.json"
+    image_dir = os.path.join(ROOT, "datasets/coco-2017/validation/data")
+    annotation_file = os.path.join(ROOT, "datasets/coco-2017/validation/labels.json")
+
     dataset = CustomCocoDataset(image_dir=image_dir,
-                                 annotation_file=annotation_file,
-                                 data_transforms=img_transforms,
-                                 label_transforms=mask_transforms,
-                                 include_files=["000000001675.jpg", "000000004795.jpg", "000000007386.jpg"],
-                                 exclude_files=["000000004795.jpg"],
-                                 include_categories=["person", "cat", "dog"],
-                                 exclude_categories=["person"]
-                                 )
+                                annotation_file=annotation_file,
+                                data_transforms=img_transforms,
+                                label_transforms=mask_transforms,
+                                include_files=["000000001675.jpg", "000000004795.jpg", "000000007386.jpg"],
+                                exclude_files=["000000004795.jpg"],
+                                include_categories=["person", "cat", "dog"],
+                                exclude_categories=["person"]
+                                )
 
     print(f"dataset length = {len(dataset)}")
 

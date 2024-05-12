@@ -7,8 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-torch = "^2.3.0"
-torchvision = "^0.18.0"
+torch = "2.2.0"
+torchvision = "0.17"
 opencv-python = "^4.9.0.80"
 pillow = "^10.3.0"
 numpy = "^1.26.4"
